@@ -6,11 +6,11 @@
 /*   By: franmart <franmart@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 18:34:53 by franmart          #+#    #+#             */
-/*   Updated: 2022/11/07 18:21:03 by franmart         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:26:11 by franmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 void	ft_putnbr_base_unsigned(unsigned long n, char *base, int *chars)
 {

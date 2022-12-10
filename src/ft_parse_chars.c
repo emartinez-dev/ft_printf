@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_auxiliary.c                                     :+:      :+:    :+:   */
+/*   ft_parse_chars.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: franmart <franmart@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:08:04 by franmart          #+#    #+#             */
-/*   Updated: 2022/11/07 18:15:45 by franmart         ###   ########.fr       */
+/*   Created: 2022/10/12 18:20:34 by franmart          #+#    #+#             */
+/*   Updated: 2022/12/10 17:26:11 by franmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
-unsigned int	ft_len(char *str)
+int	ft_parse_str(char *str)
 {
-	unsigned int	i;
+	int	len;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (!str)
+		str = "(null)";
+	len = ft_len(str);
+	ft_putstr(str);
+	return (len);
 }
 
-void	ft_putchar(char c)
+int	ft_parse_char(char c)
 {
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *s)
-{
-	write(1, s, ft_len(s));
+	ft_putchar(c);
+	return (1);
 }
