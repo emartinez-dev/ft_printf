@@ -6,7 +6,7 @@
 #    By: franmart <franmart@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 16:21:03 by franmart          #+#    #+#              #
-#    Updated: 2023/02/09 10:49:17 by franmart         ###   ########.fr        #
+#    Updated: 2024/09/27 18:40:04 by franmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,9 @@ _SRC = ft_printf.c \
 	 ft_parse_chars.c \
 	 ft_parse_nums.c \
 	 ft_auxiliary.c
+
+INCLUDES = -I ./inc
+
 SRC = ${addprefix ${SRC_DIR}, ${_SRC}}
 OBJ = ${SRC:.c=.o}
 
@@ -30,7 +33,7 @@ ${NAME}: ${OBJ}
 	@echo "$(NAME) compiled!"
 
 %.o: %.c
-	@${CC} ${FLAGS} -c $^ -o $@
+	@${CC} ${INCLUDES} ${FLAGS} -c $^ -o $@
 
 all: ${NAME}
 

@@ -6,25 +6,25 @@
 /*   By: franmart <franmart@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 18:20:34 by franmart          #+#    #+#             */
-/*   Updated: 2022/12/10 17:26:11 by franmart         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:38:19 by franmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "ft_printf.h"
 
-int	ft_parse_str(char *str)
+int	ft_parse_str(char *str, t_buffer *buf)
 {
 	int	len;
 
 	if (!str)
 		str = "(null)";
 	len = ft_len(str);
-	ft_putstr(str);
+	ft_putstr_buf(str, buf);
 	return (len);
 }
 
-int	ft_parse_char(char c)
+int	ft_parse_char(char c, t_buffer *buf)
 {
-	ft_putchar(c);
+	ft_putchar_buf(c, buf);
 	return (1);
 }

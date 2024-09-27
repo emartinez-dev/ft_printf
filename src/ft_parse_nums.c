@@ -6,26 +6,27 @@
 /*   By: franmart <franmart@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 18:34:53 by franmart          #+#    #+#             */
-/*   Updated: 2023/02/09 11:12:09 by franmart         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:39:54 by franmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_base_unsigned(unsigned long n, char *base, int *len)
+void	ft_putnbr_base_unsigned(unsigned long n, char *base, int *len,
+								t_buffer *buf)
 {
 	int		c;
 	size_t	base_len;
 
 	base_len = ft_len(base);
 	if (n / base_len > 0)
-		ft_putnbr_base_unsigned(n / base_len, base, len);
+		ft_putnbr_base_unsigned(n / base_len, base, len, buf);
 	c = base[n % base_len];
 	*len += 1;
-	ft_putchar(c);
+	ft_putchar_buf(c, buf);
 }
 
-void	ft_putnbr_base_signed(long n, char *base, int *len)
+void	ft_putnbr_base_signed(long n, char *base, int *len, t_buffer *buf)
 {
 	int		c;
 	size_t	base_len;
@@ -34,26 +35,26 @@ void	ft_putnbr_base_signed(long n, char *base, int *len)
 	if (n < 0)
 	{
 		*len += 1;
-		ft_putchar('-');
+		ft_putchar_buf('-', buf);
 		n *= -1;
 	}
 	if (n / base_len > 0)
-		ft_putnbr_base_signed(n / base_len, base, len);
+		ft_putnbr_base_signed(n / base_len, base, len, buf);
 	c = base[n % base_len];
 	*len += 1;
-	ft_putchar(c);
+	ft_putchar_buf(c, buf);
 }
 
-int	ft_parse_nbr(long n, char *base, char flag)
+int	ft_parse_nbr(long n, char *base, char flag, t_buffer *buf)
 {
 	int	len;
 
 	len = 0;
 	if (flag == 'p')
-		len += ft_parse_str("0x");
+		len += ft_parse_str("0x", buf);
 	if (flag == 'x' || flag == 'X' || flag == 'u' || flag == 'p')
-		ft_putnbr_base_unsigned(n, base, &len);
+		ft_putnbr_base_unsigned(n, base, &len, buf);
 	else
-		ft_putnbr_base_signed(n, base, &len);
+		ft_putnbr_base_signed(n, base, &len, buf);
 	return (len);
 }
