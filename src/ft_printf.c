@@ -6,7 +6,7 @@
 /*   By: franmart <franmart@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:30:50 by franmart          #+#    #+#             */
-/*   Updated: 2024/09/27 19:32:32 by franmart         ###   ########.fr       */
+/*   Updated: 2024/10/13 09:39:20 by franmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_check_arg(char flag, va_list args, t_buffer *buf)
 	if (flag == 'i' || flag == 'd')
 		len += ft_parse_nbr(va_arg(args, int), base, flag, buf);
 	if (flag == 'x' || flag == 'X')
-		len += ft_parse_nbr(va_arg(args, unsigned int), base, flag, buf);
+		len += ft_parse_nbr(va_arg(args, unsigned long long), base, flag, buf);
 	if (flag == 'p')
 		len += ft_parse_nbr(va_arg(args, unsigned long long), base, flag, buf);
 	if (flag == 'u')

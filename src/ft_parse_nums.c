@@ -6,13 +6,13 @@
 /*   By: franmart <franmart@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 18:34:53 by franmart          #+#    #+#             */
-/*   Updated: 2024/09/27 18:39:54 by franmart         ###   ########.fr       */
+/*   Updated: 2024/10/13 09:40:47 by franmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_base_unsigned(unsigned long n, char *base, int *len,
+void	ft_putnbr_base_unsigned(unsigned long long n, char *base, int *len,
 								t_buffer *buf)
 {
 	int		c;
@@ -45,7 +45,7 @@ void	ft_putnbr_base_signed(long n, char *base, int *len, t_buffer *buf)
 	ft_putchar_buf(c, buf);
 }
 
-int	ft_parse_nbr(long n, char *base, char flag, t_buffer *buf)
+int	ft_parse_nbr(unsigned long long n, char *base, char flag, t_buffer *buf)
 {
 	int	len;
 
