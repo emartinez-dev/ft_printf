@@ -13,7 +13,7 @@
 NAME = libftprintf.a
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+CFLAGS  = -Wall -Wextra -Werror -MMD -MP
 LIB = ar -rcs
 RM = rm -rf
 
@@ -27,19 +27,22 @@ INCLUDES = -I ./inc
 
 SRC = ${addprefix ${SRC_DIR}, ${_SRC}}
 OBJ = ${SRC:.c=.o}
+DEP = ${OBJ:.o=.d}
 
 ${NAME}: ${OBJ}
 	@${LIB} $@ $^
 	@echo "$(NAME) compiled!"
 
 %.o: %.c
-	@${CC} ${INCLUDES} ${FLAGS} -c $^ -o $@
+	@${CC} ${INCLUDES} ${CFLAGS} -c $< -o $@
+
+-include $(DEP)
 
 all: ${NAME}
 
 clean:
 	@echo "Removing files..."
-	@${RM} ${OBJ} ${BONUS_OBJ}
+	@${RM} ${OBJ} ${OBJ:.o=.d} ${BONUS_OBJ} ${BONUS_OBJ:.o=.d} ${DEP}
 	@echo "Done!"
 
 fclean: clean
